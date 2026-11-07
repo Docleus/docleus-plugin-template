@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" /></a>
-  <img alt="Public preview in preparation" src="https://img.shields.io/badge/preview-0.0.1-cfcfcf?style=flat-square" />
+  <img alt="Public preview in preparation" src="https://img.shields.io/badge/preview-0.0.2-cfcfcf?style=flat-square" />
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square" />
   <a href="https://docleus.io"><img alt="Online documentation" src="https://img.shields.io/badge/docs-docleus.io-111111?style=flat-square" /></a>
 </p>
@@ -64,22 +64,22 @@ before 1.0 and may change in a minor version.
 
 `docleus.plugin.json` describes the package to the host:
 
-| Field                  | Meaning                                                                                                                              |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `name`, `version`      | The package name and its exact version                                                                                               |
-| `engines.docleus`      | The platform versions the plugin supports, as an npm-style range (`^0.0.1`). Outside it the plugin is refused at install and at boot |
-| `entries`              | `shared`, `server`, `editor` and `site` files in `dist/`; at least one                                                               |
-| `requires`, `provides` | Services the plugin needs from other plugins, and core services it replaces (`docleus-plugin-blobs-s3` provides `blobs`)             |
-| `syntax`               | Markdown syntax the plugin claims, such as `directive:acme.callout`                                                                  |
-| `exposes`              | Browser modules the plugin adds to the host import map for other plugins                                                             |
-| `islands`              | Interactive block types on published sites, mapped to their browser module                                                           |
+| Field                  | Meaning                                                                                                                                      |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`, `version`      | The package name and its exact version                                                                                                       |
+| `engines.docleus`      | The platform versions the plugin supports, as an npm-style range (`>=0.0.1 <0.0.3`). Outside it the plugin is refused at install and at boot |
+| `entries`              | `shared`, `server`, `editor` and `site` files in `dist/`; at least one                                                                       |
+| `requires`, `provides` | Services the plugin needs from other plugins, and core services it replaces (`docleus-plugin-blobs-s3` provides `blobs`)                     |
+| `syntax`               | Markdown syntax the plugin claims, such as `directive:acme.callout`                                                                          |
+| `exposes`              | Browser modules the plugin adds to the host import map for other plugins                                                                     |
+| `islands`              | Interactive block types on published sites, mapped to their browser module                                                                   |
 
 Keep `engines.docleus` and the `@docleus/sdk` peer range in `package.json` in
 step. The maintainers' `scripts/compat` checks both for every plugin.
 
-The first public preview uses `^0.0.1` for both ranges. This means
-`>=0.0.1 <0.0.2`: releasing for `0.0.2` requires explicitly updating the
-compatibility range and testing against that platform.
+Version `0.0.2` declares `>=0.0.1 <0.0.3` for both ranges, covering
+Docleus core and SDK `0.0.1` and `0.0.2`. Expand these ranges only after
+testing against the additional platform versions.
 
 ## Trying it in an instance
 
